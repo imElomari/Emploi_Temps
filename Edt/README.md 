@@ -1,0 +1,50 @@
+# Projet Django - Génération d'Emploi du Temps
+
+## Vue d'ensemble
+Ce projet est une application web basée sur Django pour gérer les emplois du temps. Les fonctionnalités incluent la gestion des salles, des professeurs, des matières, ainsi que la possibilité de charger des données via un fichier Excel.
+
+## Fonctionnalités
+- Créer, mettre à jour et supprimer des entités (salles, professeurs, matières, etc.).
+- Lister toutes les entités.
+- Charger des données depuis un fichier Excel.
+
+## Prérequis
+- Python 3.11
+- Django
+- Pandas
+- Openpyxl
+- PostgreSQL
+
+## Instructions d'installation
+
+- Pour interagir avec PostgreSQL dans Django, executez la commande suivante pour installer le package psycopg2-binary:
+
+    pip install psycopg2-binary
+
+- Pour installer Pandas et Openpyxl, exécutez la commande suivante:
+
+    pip install pandas openpyxl
+
+   Pandas : Une bibliothèque pour la manipulation et l'analyse de données
+   Openpyxl : Une bibliothèque pour lire/écrire des fichiers Excel (.xlsx)
+
+## Configuration de la base de données
+Ouvrez le fichier settings.py et remplacez la configuration de DB par votre propre configuration (DB name, user, password)
+
+#   Appliquer les migrations
+    python manage.py migrate
+
+# Lancer le serveur
+    python manage.py runserver
+
+## Exemple pour les salles :
+- Créer une nouvelle salle
+Accédez à http://127.0.0.1:8000/rooms/create/.
+
+** Remarque : pour le fichier excel, les noms des colonnes DOIVENT être : Nom, Capacite, Prise.
+
+- Lister toutes les salles
+Accédez à http://127.0.0.1:8000/rooms/.
+
+
+

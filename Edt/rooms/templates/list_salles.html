@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Liste des Salles</h2>
+    <a class="btn btn-primary me-1 mb-1" href="{% url 'create_salle' %}">Add Salle</a>
+    <div class="table-responsive scrollbar">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Capacité</th>
+                <th scope="col">Prise</th>
+                <th class="text-end" scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for salle in salles %}
+                <tr>
+                    <td>{{ salle.nom }}</td>
+                    <td>{{ salle.capacite }}</td>
+                    <td>
+                        {% if salle.prise %}
+                            <span class="badge rounded-pill text-bg-success">Oui</span>
+                        {% else %}
+                            <span class="badge rounded-pill text-bg-warning">Non</span>
+                        {% endif %}
+                    </td>
+                    <td class="text-end">
+                        <div>
+                            <a class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" href="{% url 'update_salle' salle.pk %}" title="Edit">
+                                <span class="text-500 fas fa-edit"></span>
+                            </a>
+                            <a class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" href="{% url 'delete_salle' salle.pk %}" title="Delete">
+                                <span class="text-500 fas fa-trash-alt"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
