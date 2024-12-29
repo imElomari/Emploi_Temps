@@ -1,42 +1,54 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <h2>Liste des Salles</h2>
-    <a class="btn btn-primary me-1 mb-1" href="{% url 'create_salle' %}">Add Salle</a>
-    <div class="table-responsive scrollbar">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Nom</th>
-                <th scope="col">Capacité</th>
-                <th scope="col">Prise</th>
-                <th class="text-end" scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for salle in salles %}
-                <tr>
-                    <td>{{ salle.nom }}</td>
-                    <td>{{ salle.capacite }}</td>
-                    <td>
-                        {% if salle.prise %}
-                            <span class="badge rounded-pill text-bg-success">Oui</span>
-                        {% else %}
-                            <span class="badge rounded-pill text-bg-warning">Non</span>
-                        {% endif %}
-                    </td>
-                    <td class="text-end">
-                        <div>
-                            <a class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" href="{% url 'update_salle' salle.pk %}" title="Edit">
-                                <span class="text-500 fas fa-edit"></span>
-                            </a>
-                            <a class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" href="{% url 'delete_salle' salle.pk %}" title="Delete">
-                                <span class="text-500 fas fa-trash-alt"></span>
-                            </a>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h2>Liste des Salles</h2>
+                        <a class="btn btn-primary" href="{% url 'create_salle' %}">
+                            <i class="fas fa-plus"></i> Add Salle</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Capacité</th>
+                                    <th scope="col">Prise</th>
+                                    <th class="text-end" scope="col">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for salle in salles %}
+                                    <tr>
+                                        <td>{{ salle.nom }}</td>
+                                        <td>{{ salle.capacite }}</td>
+                                        <td>
+                                            {% if salle.prise %}
+                                                <span class="badge bg-success">Oui</span>
+                                            {% else %}
+                                                <span class="badge bg-warning">Non</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-end">
+                                            <a class="btn btn-sm btn-outline-primary" href="{% url 'update_salle' salle.pk %}" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a class="btn btn-sm btn-outline-danger ms-2" href="{% url 'delete_salle' salle.pk %}" title="Delete">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
