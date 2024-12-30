@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Create Professeur</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ profs_form.as_p }}
+        <button type="submit" name="save_prof">Save</button>
+    </form>
+
+    <h2>Upload Excel File</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ excel_form.as_p }}
+        <button type="submit" name="upload_excel">Upload</button>
+    </form>
+{% endblock %}

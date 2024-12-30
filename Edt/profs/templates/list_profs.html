@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Liste des Professeurs</h2>
+    <a class="btn btn-primary me-1 mb-1" href="{% url 'create_prof' %}">Add Salle</a>
+    <div class="table-responsive scrollbar">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ISBN</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Nombre d'heures/Semaines</th>
+                <th class="text-end" scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for prof in profs %}
+                <tr>
+                    <td>{{ prof.ISBN }}</td>
+                    <td>{{ prof.nom }}</td>
+                    <td>{{ prof.prenom }}</td>
+                    <td>{{ prof.nbr_heur_semaine }}</td>
+                    <td class="text-end">
+                        <div>
+                            <a class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" href="{% url 'update_prof' prof.pk %}" title="Edit">
+                                <span class="text-500 fas fa-edit"></span>
+                            </a>
+                            <a class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" href="{% url 'delete_prof' prof.pk %}" title="Delete">
+                                <span class="text-500 fas fa-trash-alt"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
