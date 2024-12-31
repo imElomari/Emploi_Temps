@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Create Filiere</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" class="mb-4">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ filiere_form.as_p }}
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="save_filiere">Save</button>
+                        </form>
+                        <hr>
+                        <h2>Upload Excel File</h2>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ excel_form.as_p }}
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="upload_excel">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

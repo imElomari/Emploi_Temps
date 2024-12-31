@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Edt',
     'rooms',
     'profs',
+    'filieres',
 
 ]
 

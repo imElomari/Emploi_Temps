@@ -7,7 +7,7 @@ from .forms import SallesForm, ExcelUploadForm
 from .models import Salles
 
 class SallesCreateView(View):
-    template_name = 'create_salle.html'
+    template_name = 'create_module.html'
     success_url = reverse_lazy('list_salles')
 
     def get(self, request):

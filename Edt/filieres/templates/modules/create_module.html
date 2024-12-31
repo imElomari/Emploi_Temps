@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Create Module</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" class="mb-4">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ module_form.as_p }}
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="save_module">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

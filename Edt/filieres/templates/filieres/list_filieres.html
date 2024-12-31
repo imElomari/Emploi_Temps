@@ -1,0 +1,53 @@
+<!-- Edt/filieres/templates/filieres/list_filieres.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h2>Liste des Filieres</h2>
+                        <a class="btn btn-primary" href="{% url 'create_filiere' %}">
+                            <i class="fas fa-plus"></i> Add Filiere</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Code</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Effectif</th>
+                                    <th class="text-end" scope="col">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for filiere in filieres %}
+                                    <tr>
+                                        <td>{{ filiere.code }}</td>
+                                        <td>{{ filiere.nom }}</td>
+                                        <td>{{ filiere.effectif }}</td>
+                                        <td class="text-end">
+                                            <a class="btn btn-sm btn-outline-primary" href="{% url 'update_filiere' filiere.pk %}" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a class="btn btn-sm btn-outline-danger ms-2" href="{% url 'delete_filiere' filiere.pk %}" title="Delete">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                            <a class="btn btn-sm btn-outline-success ms-2" href="{% url 'list_modules_filiere' filiere.pk %}">
+                                                View Modules
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
